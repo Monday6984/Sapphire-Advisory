@@ -1,0 +1,141 @@
+.form {
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.rule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin-bottom: 24px;
+  background: var(--gold);
+}
+
+.heading {
+  margin-bottom: clamp(24px, 3vw, 32px);
+  font-size: clamp(30px, 3vw, 38px);
+  font-weight: 400;
+  color: var(--navy);
+}
+
+/* ---------- Fields ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--grey);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 14px;
+  font-size: 16px; /* 16px stops iOS zooming on focus */
+  color: var(--charcoal);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition:
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.input:hover {
+  border-color: #c5ccd6;
+}
+
+.input:focus {
+  outline: none;
+  background: var(--white);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 150, 46, 0.18);
+}
+
+.input[aria-invalid='true'] {
+  border-color: #b3261e;
+  background: var(--white);
+}
+
+.select {
+  padding-right: 42px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%230A1F44' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* ---------- Submit, note, status ---------- */
+
+.submit {
+  margin-top: 28px;
+}
+
+.note {
+  max-width: 38em;
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: var(--grey);
+}
+
+.status:empty {
+  display: none;
+}
+
+.status {
+  margin-top: 18px;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: var(--charcoal);
+  background: #eef2f8;
+  border-left: 3px solid var(--navy-3);
+}
+
+.error {
+  background: #fbefee;
+  border-left-color: #b3261e;
+}
+
+.success {
+  border-left-color: var(--gold);
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .submit {
+    width: 100%;
+  }
+}

@@ -1,0 +1,61 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.button:disabled {
+  opacity: 0.6;
+}
+
+/* Gold — primary call to action */
+.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.gold:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
+/* Navy — primary action on light backgrounds */
+.navy {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.navy:hover {
+  background: var(--navy-3);
+  border-color: var(--navy-3);
+}
+
+/* Outline — secondary action on navy backgrounds */
+.outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--white);
+}
+
+.outline:hover {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+}

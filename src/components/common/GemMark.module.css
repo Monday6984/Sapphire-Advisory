@@ -1,0 +1,111 @@
+.mark {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* ---------- Dial & rings ---------- */
+
+.tick {
+  stroke: rgba(184, 150, 46, 0.28);
+  stroke-width: 1;
+}
+
+.tickMajor {
+  stroke: rgba(184, 150, 46, 0.6);
+  stroke-width: 1;
+}
+
+.rings circle {
+  fill: none;
+  stroke: rgba(184, 150, 46, 0.22);
+  stroke-width: 1;
+}
+
+.rings .ringDashed {
+  stroke: rgba(184, 150, 46, 0.16);
+  stroke-dasharray: 2 6;
+}
+
+/* ---------- Gem ---------- */
+
+.crown {
+  fill: rgba(30, 58, 114, 0.55);
+}
+
+.pavilionL {
+  fill: rgba(21, 46, 94, 0.7);
+}
+
+.pavilionR {
+  fill: rgba(30, 58, 114, 0.35);
+}
+
+.gem polygon,
+.gem line,
+.gem path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.nodes circle {
+  fill: var(--gold-soft);
+}
+
+/* ---------- Load animation ---------- */
+
+.animated .draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 2.2s var(--ease) forwards;
+}
+
+.animated .d2 {
+  animation-delay: 0.45s;
+}
+
+.animated .d3 {
+  animation-delay: 0.85s;
+}
+
+.animated .facets,
+.animated .nodes {
+  opacity: 0;
+  animation: fade 1.6s var(--ease) 1.4s forwards;
+}
+
+.animated .dial,
+.animated .rings {
+  opacity: 0;
+  animation: fade 1.8s var(--ease) 0.1s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .draw {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+
+  .animated .facets,
+  .animated .nodes,
+  .animated .dial,
+  .animated .rings {
+    opacity: 1;
+    animation: none;
+  }
+}

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sapphire Advisory | Data protection made easy</title>
+<meta name="description" content="Practical UK GDPR and data protection support for fintech and healthtech startups and scaleups, including outsourced DPO, DPIAs and training.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1F44;
+  --navy-2:#152E5E;
+  --navy-3:#1E3A72;
+  --gold:#B8962E;
+  --gold-soft:#F0D98A;
+  --charcoal:#1C2B33;
+  --slate:#2E3E48;
+  --grey:#4A5568;
+  --paper:#F6F7F9;
+  --white:#FFFFFF;
+  --line:#DCE1E8;
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --wrap:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.65;color:var(--charcoal);background:var(--paper);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;margin:0;color:var(--navy)}
+p{margin:0 0 1em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--navy);padding:10px 16px;z-index:100}
+.skip:focus{left:10px;top:10px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--navy);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid rgba(184,150,46,.25)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+.brand svg{width:34px;height:34px}
+.brand-name{font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:.01em;line-height:1}
+.brand-name small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;color:var(--gold);margin-top:4px;font-weight:500}
+.menu{display:flex;gap:30px;list-style:none;margin:0;padding:0;align-items:center}
+.menu a{color:#C9D2E3;text-decoration:none;font-size:15px;padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.menu a:hover{color:var(--white)}
+.menu a[aria-current="page"]{color:var(--white);border-bottom-color:var(--gold)}
+.menu .btn{padding:10px 20px;border-bottom:0}
+.menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:var(--white);font:inherit;font-size:14px;padding:8px 14px;border-radius:3px;cursor:pointer}
+
+/* Buttons */
+.btn{display:inline-block;font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:.02em;text-decoration:none;padding:14px 26px;border-radius:3px;border:1px solid var(--gold);cursor:pointer;transition:background .2s,color .2s}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+.btn-line{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold-soft)}
+.btn-navy{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.btn-navy:hover{background:var(--navy-3);border-color:var(--navy-3)}
+.menu .btn-gold{color:var(--navy)}
+
+/* Pages */
+.page{display:none}
+.page.is-active{display:block}
+
+/* Hero */
+.hero{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;min-height:620px;padding:70px 0 90px}
+.hero h1{color:var(--white);font-size:clamp(48px,7vw,96px);font-weight:400;letter-spacing:-.01em;line-height:.98}
+.hero-sub{font-size:19px;color:#C9D2E3;max-width:32em;margin:28px 0 38px;font-weight:300}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-mark{position:relative;justify-self:center;width:100%;max-width:440px}
+.hero-mark svg{width:100%;height:auto}
+.gem path,.gem line,.gem polygon{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-linejoin:round}
+.rings circle{fill:none;stroke:rgba(184,150,46,.28);stroke-width:1}
+.draw{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.4s ease forwards}
+.draw.d2{animation-delay:.5s}
+.draw.d3{animation-delay:.9s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+
+/* Page header (inner pages) */
+.page-head{background:var(--navy);color:var(--white);padding:90px 0 80px;position:relative;overflow:hidden}
+.page-head h1{color:var(--white);font-size:clamp(40px,5.5vw,70px);font-weight:400;max-width:15em}
+.page-head p{color:#C9D2E3;font-size:19px;font-weight:300;max-width:36em;margin:22px 0 0}
+.page-head .ring-deco{position:absolute;right:-140px;top:-120px;width:460px;height:460px;border:1px solid rgba(184,150,46,.25);border-radius:50%}
+.page-head .ring-deco::after{content:"";position:absolute;inset:60px;border:1px solid rgba(184,150,46,.15);border-radius:50%}
+
+/* Sections */
+.section{padding:100px 0}
+.section-tight{padding:70px 0}
+.section-white{background:var(--white)}
+.section-navy{background:var(--navy);color:#C9D2E3}
+.section-navy h2,.section-navy h3{color:var(--white)}
+.section-charcoal{background:var(--charcoal);color:#C3CAD2}
+.section-charcoal h2{color:var(--white)}
+.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 26px}
+.h2{font-size:clamp(34px,4vw,52px);margin-bottom:22px}
+.lede{font-family:var(--serif);font-size:clamp(22px,2.3vw,28px);line-height:1.45;color:var(--navy);max-width:34em}
+.muted{color:var(--grey)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.measure{max-width:38em}
+
+/* Audience */
+.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-top:50px}
+.audience article{padding:36px 32px 10px 0;border-right:1px solid var(--line);margin-right:32px}
+.audience article:last-child{border-right:0;margin-right:0}
+.audience h3{font-size:30px;margin-bottom:14px}
+.audience p{color:var(--grey);font-size:16px}
+.text-link{color:var(--navy);font-weight:500;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;font-size:15px}
+.text-link:hover{color:var(--navy-3);border-bottom-color:var(--navy-3)}
+
+/* Situations list (home) */
+.situations{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.14)}
+.situations li{border-bottom:1px solid rgba(255,255,255,.14)}
+.situations a{display:grid;grid-template-columns:minmax(220px,1fr) 1.4fr auto;gap:30px;align-items:baseline;padding:24px 0;text-decoration:none;transition:background .2s}
+.situations a:hover .sit-title{color:var(--gold-soft)}
+.sit-title{font-family:var(--serif);font-size:27px;color:var(--white);transition:color .2s}
+.sit-desc{color:#AEB9CC;font-size:16px}
+.sit-go{color:var(--gold);font-size:14px;letter-spacing:.04em;white-space:nowrap}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:46px 70px;margin-top:50px}
+.why h3{font-size:27px;margin-bottom:10px}
+.why p{color:var(--grey);font-size:16px;margin:0}
+.note{font-size:14px;color:var(--grey);background:#FFF8DE;border-left:3px solid var(--gold);padding:12px 16px;margin-top:40px;max-width:46em}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:50px;counter-reset:step}
+.steps li{list-style:none;position:relative;padding-top:74px}
+.steps li::before{counter-increment:step;content:counter(step);position:absolute;top:0;left:0;font-family:var(--serif);font-size:58px;line-height:1;color:var(--gold)}
+.steps h3{font-size:26px;color:var(--white);margin-bottom:10px}
+.steps p{margin:0;font-size:16px;color:#AEB9CC}
+.steps ol{padding:0;margin:0}
+
+/* CTA band */
+.cta-band{background:var(--white);border-top:1px solid var(--line)}
+.cta-inner{display:grid;grid-template-columns:1.3fr auto;gap:40px;align-items:center}
+.cta-inner h2{font-size:clamp(32px,3.6vw,46px);margin-bottom:12px}
+.cta-inner p{color:var(--grey);margin:0;max-width:34em}
+
+/* Services explorer */
+.explorer{display:grid;grid-template-columns:330px 1fr;gap:0;background:var(--white);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.tabs{list-style:none;margin:0;padding:10px 0;background:var(--paper);border-right:1px solid var(--line)}
+.tabs button{display:block;width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;font-family:var(--serif);font-size:21px;color:var(--grey);padding:16px 26px;cursor:pointer;line-height:1.25;transition:color .2s,background .2s}
+.tabs button:hover{color:var(--navy)}
+.tabs button[aria-selected="true"]{color:var(--navy);background:var(--white);border-left-color:var(--gold)}
+.panel{padding:54px 58px}
+.panel[hidden]{display:none}
+.panel h2{font-size:clamp(32px,3.4vw,44px);margin-bottom:16px}
+.panel .context{font-size:18px;color:var(--grey);max-width:34em;margin-bottom:30px}
+.checklist{list-style:none;padding:0;margin:0 0 34px;display:grid;gap:12px}
+.checklist li{position:relative;padding-left:30px}
+.checklist li::before{content:"";position:absolute;left:0;top:.62em;width:14px;height:1.5px;background:var(--gold)}
+.outcome{border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline}
+.outcome strong{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);white-space:nowrap}
+.outcome p{margin:0;color:var(--charcoal)}
+.unsure{margin-top:70px;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.unsure h2{font-size:clamp(32px,3.6vw,46px)}
+
+/* Sector blocks */
+.sector{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;padding:80px 0;border-bottom:1px solid var(--line)}
+.sector:last-of-type{border-bottom:0}
+.sector h2{font-size:clamp(38px,4.4vw,58px);margin-bottom:18px}
+.sector .intro{color:var(--grey);font-size:17px}
+.sector h3{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.04em;color:var(--navy);margin:0 0 18px}
+
+/* Values */
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:0 70px;margin-top:40px}
+.values div{border-top:1px solid rgba(255,255,255,.14);padding:22px 0;display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:baseline}
+.values dt{font-family:var(--serif);font-size:25px;color:var(--gold-soft)}
+.values dd{margin:0;color:#AEB9CC;font-size:16px}
+.values dl{margin:0}
+
+.founder{display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start}
+.portrait{aspect-ratio:4/5;background:var(--navy-2);border-radius:3px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:20px;color:#8FA0BF;font-size:13px}
+.portrait::before{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(184,150,46,.35);border-radius:50%;top:-60px;right:-90px}
+
+/* Training */
+.offer-list{margin:40px 0 0;padding:0;list-style:none}
+.offer-list li{display:grid;grid-template-columns:minmax(220px,.8fr) 1.2fr;gap:40px;padding:26px 0;border-top:1px solid var(--line)}
+.offer-list h3{font-size:25px}
+.offer-list p{margin:0;color:var(--grey)}
+
+/* FAQ */
+.faq{max-width:860px}
+.faq details{border-top:1px solid var(--line);padding:0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;font-family:var(--serif);font-size:25px;color:var(--navy);padding:26px 50px 26px 0;position:relative;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{color:var(--grey);padding:0 50px 26px 0;margin:0;max-width:44em}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:start}
+form{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:44px}
+.field{margin-bottom:22px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+label{display:block;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:8px}
+label span{font-weight:400;color:var(--grey)}
+input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--charcoal);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:13px 14px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy-3);background:var(--white);box-shadow:0 0 0 3px rgba(30,58,114,.12)}
+textarea{min-height:150px;resize:vertical}
+.form-note{font-size:14px;color:var(--grey);margin:18px 0 0}
+.form-status{margin-top:18px;padding:14px 16px;background:#EEF2F8;border-left:3px solid var(--navy-3);font-size:15px;display:none}
+.form-status.show{display:block}
+.contact-aside h3{font-size:28px;margin-bottom:18px}
+.contact-aside dl{margin:0}
+.contact-aside dt{font-size:13px;color:var(--grey);margin-top:18px}
+.contact-aside dd{margin:2px 0 0;font-family:var(--serif);font-size:22px;color:var(--navy)}
+.urgent{background:var(--navy);color:#C9D2E3;padding:28px;border-radius:4px;margin-top:36px}
+.urgent h3{color:var(--white);font-size:24px;margin-bottom:8px}
+.urgent p{margin:0;font-size:15px}
+
+/* Footer */
+.site-footer{background:var(--charcoal);color:#98A3AF;padding:70px 0 calc(34px + env(safe-area-inset-bottom,0px));font-size:15px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid var(--slate)}
+.foot-tag{font-family:var(--serif);font-size:24px;color:var(--white);margin:20px 0 0;max-width:15em;line-height:1.3}
+.site-footer h4{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--gold);margin:0 0 16px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.site-footer a{text-decoration:none;color:#C3CAD2}
+.site-footer a:hover{color:var(--gold-soft)}
+.legal{padding-top:26px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;min-height:0;padding:60px 0 70px}
+  .hero-mark{max-width:300px;justify-self:start;order:-1;margin-bottom:10px}
+  .two-col,.sector,.unsure,.contact-grid,.founder{grid-template-columns:1fr;gap:40px}
+  .audience{grid-template-columns:1fr}
+  .audience article{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding:30px 0}
+  .audience article:last-child{border-bottom:0}
+  .explorer{grid-template-columns:1fr}
+  .tabs{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:0}
+  .tabs li{flex:0 0 auto}
+  .tabs button{border-left:0;border-bottom:3px solid transparent;font-size:18px;padding:16px 20px;white-space:nowrap}
+  .tabs button[aria-selected="true"]{border-bottom-color:var(--gold)}
+  .panel{padding:38px 28px}
+  .values{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid > div:first-child{grid-column:1/-1}
+  .portrait{max-width:280px}
+}
+@media (max-width:820px){
+  .menu-toggle{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;align-items:stretch;gap:0;padding:10px 28px 26px;border-bottom:1px solid rgba(184,150,46,.25)}
+  .menu.open{display:flex}
+  .menu li a{display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .menu li a[aria-current="page"]{border-bottom-color:rgba(255,255,255,.08);color:var(--gold-soft)}
+  .menu .btn{margin-top:16px;text-align:center;padding:14px}
+  .situations a{grid-template-columns:1fr;gap:6px}
+  .why,.steps{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr}
+  .offer-list li{grid-template-columns:1fr;gap:10px}
+  .values div{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .section{padding:70px 0}
+  .field-row{grid-template-columns:1fr;gap:0}
+  form{padding:28px 22px}
+  .foot-grid{grid-template-columns:1fr}
+  .outcome{grid-template-columns:1fr;gap:6px}
+  .faq summary{font-size:21px}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#home" class="brand" aria-label="Sapphire Advisory home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#B8962E" stroke-width="1"/><polygon points="13,15 27,15 31,19 20,31 9,19" fill="none" stroke="#B8962E" stroke-width="1.2" stroke-linejoin="round"/><line x1="9" y1="19" x2="31" y2="19" stroke="#B8962E" stroke-width="1"/><line x1="16" y1="15" x2="14" y2="19" stroke="#B8962E" stroke-width="1"/><line x1="24" y1="15" x2="26" y2="19" stroke="#B8962E" stroke-width="1"/><line x1="14" y1="19" x2="20" y2="31" stroke="#B8962E" stroke-width="1"/><line x1="26" y1="19" x2="20" y2="31" stroke="#B8962E" stroke-width="1"/></svg>
+      <span class="brand-name">Sapphire<small>ADVISORY</small></span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul class="menu" id="menu">
+      <li><a href="#home" data-nav="home">Home</a></li>
+      <li><a href="#about" data-nav="about">About</a></li>
+      <li><a href="#services" data-nav="services">Services</a></li>
+      <li><a href="#who-we-help" data-nav="who-we-help">Who we help</a></li>
+      <li><a href="#training" data-nav="training">Training</a></li>
+      <li><a href="#faqs" data-nav="faqs">FAQs</a></li>
+      <li><a href="#contact" class="btn btn-gold" data-nav="contact">Talk to us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<section class="page" id="page-home" data-title="Sapphire Advisory | Data protection made easy">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Data protection made easy</h1>
+        <p class="hero-sub">Practical data protection and information governance support for fintech and healthtech startups and scaleups in the UK, and for businesses expanding into it.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Talk to us</a>
+          <a href="#services" class="btn btn-line">See how we can help</a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <g class="rings">
+            <circle cx="200" cy="200" r="196"/>
+            <circle cx="200" cy="200" r="160"/>
+            <circle cx="200" cy="200" r="124"/>
+          </g>
+          <g class="gem">
+            <polygon class="draw" points="150,140 250,140 300,185 200,300 100,185"/>
+            <line class="draw d2" x1="100" y1="185" x2="300" y2="185"/>
+            <path class="draw d2" d="M150,140 L125,185 M250,140 L275,185 M200,140 L175,185 M200,140 L225,185 M150,140 L175,185 M250,140 L225,185"/>
+            <path class="draw d3" d="M125,185 L200,300 M175,185 L200,300 M225,185 L200,300 M275,185 L200,300"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap two-col">
+      <div>
+        <hr class="rule">
+        <h2 class="h2">Help when the questions arrive</h2>
+      </div>
+      <div class="measure">
+        <p class="lede">For a growing business, data protection questions tend to arrive at the busiest moments.</p>
+        <p class="muted">A bank partner asks for your data protection policies before onboarding you. An NHS trust wants to see your DSP Toolkit before a pilot. A customer sends a subject access request with a one-month deadline, and nobody on the team is sure what to do first.</p>
+        <p class="muted">Sapphire Advisory helps you deal with all of this without the cost of a full-time specialist or the confusion of legal jargon. We explain what the law requires in plain English, show you what applies to your business, and help you put it in place in a way your team can keep up with.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">Who we work with</h2>
+      <div class="audience">
+        <article>
+          <h3>Fintech</h3>
+          <p>You handle financial and personal data every day, and your partners, banks and investors expect to see that you handle it properly. We help you build compliance that stands up to due diligence.</p>
+          <a class="text-link" href="#who-we-help/fintech">Support for fintech</a>
+        </article>
+        <article>
+          <h3>Healthtech</h3>
+          <p>Health data is special category data under UK GDPR and carries stricter rules. We help you meet those requirements and get ready to work with the NHS and other healthcare organisations.</p>
+          <a class="text-link" href="#who-we-help/healthtech">Support for healthtech</a>
+        </article>
+        <article>
+          <h3>Expanding into the UK</h3>
+          <p>If you're entering or scaling in the UK, we help you understand what UK data protection law expects from you and get your documentation, policies and DPO arrangements in place.</p>
+          <a class="text-link" href="#who-we-help/uk">Support for UK expansion</a>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-navy">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">How can we help?</h2>
+      <p style="max-width:34em">Tell us where you are and we'll show you where we fit.</p>
+      <ul class="situations">
+        <li><a href="#services/ongoing"><span class="sit-title">We need ongoing advice</span><span class="sit-desc">A trusted data protection adviser and outsourced DPO, without a full-time hire.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/compliant"><span class="sit-title">We need to get compliant</span><span class="sit-desc">Policies, privacy notices, ROPA and DSP Toolkit support that keeps up with your growth.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/incident"><span class="sit-title">Something has happened</span><span class="sit-desc">Practical support with data breaches, subject access requests and complaints.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/new"><span class="sit-title">We're introducing something new</span><span class="sit-desc">DPIAs, AI governance and legitimate interest assessments before you launch.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/partners"><span class="sit-title">We're working with another organisation</span><span class="sit-desc">Data processing and sharing agreements, contract reviews and international transfers.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/culture"><span class="sit-title">We want a data protection culture</span><span class="sit-desc">Tailored training and workshops for your whole team.</span><span class="sit-go">View service</span></a></li>
+        <li><a href="#services/uk"><span class="sit-title">We're expanding into the UK</span><span class="sit-desc">Guidance on UK GDPR, documentation and UK DPO support.</span><span class="sit-go">View service</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">Why Sapphire Advisory</h2>
+      <div class="why">
+        <div><h3>Built around startups</h3><p>We understand that you're moving fast with limited budget and a small team. Our support is sized to your stage of growth, so you get what you need now and add more as you scale.</p></div>
+        <div><h3>Plain English, always</h3><p>We translate regulations into clear actions. You won't need to know the name of a law or a service before speaking to us.</p></div>
+        <div><h3>Proportionate advice</h3><p>Every recommendation is weighed against the real risk to your business, so you can focus on what matters most instead of chasing every possible requirement at once.</p></div>
+        <div><h3>Sector focus</h3><p>We specialise in fintech and healthtech, so we already understand the data you hold, the partners you work with and the questions they're likely to ask.</p></div>
+        <div><h3>Confidential and reliable</h3><p>Your business information and any incidents you share with us are handled with complete discretion.</p></div>
+      </div>
+      <p class="note">Draft for review: the brand questionnaire left the unique selling proposition blank, so this section needs the client's sign-off.</p>
+    </div>
+  </div>
+
+  <div class="section section-navy">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">How it works</h2>
+      <ol class="steps">
+        <li><h3>Tell us what's going on</h3><p>Share what you're trying to do, what has changed or where you're stuck.</p></li>
+        <li><h3>We work out what you need</h3><p>We review your situation and recommend the support that fits your business and budget.</p></li>
+        <li><h3>We help you get it done</h3><p>We deliver the work with you and stay available for ongoing support as you grow.</p></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section-tight cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Data protection that works for your business</h2>
+        <p>Whether you're building your compliance foundations or dealing with something urgent, we're here to help you take the next step with confidence.</p>
+      </div>
+      <a href="#contact" class="btn btn-navy">Book a conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about" data-title="About Sapphire Advisory | UK Data Protection Consultancy">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Helping growing businesses get data protection right</h1>
+      <p>Clear, practical data protection support for fintech and healthtech startups and scaleups.</p>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap two-col">
+      <div>
+        <hr class="rule">
+        <h2 class="h2">Our story</h2>
+      </div>
+      <div class="measure">
+        <p class="lede">Data protection obligations apply from the moment you start handling personal data, yet most young businesses can't afford a full-time DPO or the fees of a large law firm.</p>
+        <p class="muted">Many end up guessing, copying templates that don't fit, or leaving compliance until a partner or regulator asks for it. Sapphire Advisory was set up to offer another option: experienced, practical data protection support at a level that makes sense for startups and scaleups.</p>
+        <p class="muted">We focus on fintech and healthtech because these sectors handle some of the most sensitive data there is, and the cost of getting it wrong is high for customers and businesses alike.</p>
+        <p class="muted">[Optional: one or two lines on why the founder started the company.]</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap two-col">
+      <div>
+        <hr class="rule">
+        <h2 class="h2">Our mission</h2>
+        <p class="lede">To help fintech and healthtech organisations simplify their data protection obligations and stay compliant with the law.</p>
+      </div>
+      <div>
+        <hr class="rule">
+        <h2 class="h2">Our vision</h2>
+        <p>We want to see organisations use data protection as a business strategy. Good data practices build customer trust, speed up partnerships and make due diligence easier.</p>
+        <p class="muted">We also want to help businesses build a strong compliance culture through training, so that every member of the team understands their part in protecting personal data.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-navy">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">Our values</h2>
+      <dl class="values">
+        <div><dt>Compliance</dt><dd>We help you meet your legal obligations clearly and accurately.</dd></div>
+        <div><dt>Integrity</dt><dd>We give honest advice, even when it isn't the easiest thing to hear.</dd></div>
+        <div><dt>Excellence</dt><dd>We hold our work to a high standard, whatever the size of the project.</dd></div>
+        <div><dt>Practicality</dt><dd>Our recommendations are designed to be put into action by real teams with real constraints.</dd></div>
+        <div><dt>Confidentiality</dt><dd>We treat your information and your business with complete discretion.</dd></div>
+        <div><dt>Reliability</dt><dd>When you need us, especially during an incident, we respond.</dd></div>
+        <div><dt>Proactivity</dt><dd>We help you spot risks early, before they become problems.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap founder">
+      <div class="portrait">[Founder photo]</div>
+      <div class="measure">
+        <hr class="rule">
+        <h2 class="h2">Meet the founder</h2>
+        <p class="lede">[Founder name], [role/title]</p>
+        <p class="muted">[Founder name] has [X years] of experience in data protection and information governance across [sectors, e.g. healthcare and financial services]. [Qualifications, certifications or professional memberships.]</p>
+        <p class="muted">[One or two sentences on what they enjoy about helping startups.]</p>
+        <a href="#contact" class="btn btn-navy" style="margin-top:10px">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="page-services" data-title="Data Protection Services | Outsourced DPO, DPIAs & UK GDPR">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>How can we help?</h1>
+      <p>Data protection support that fits the way your business actually works. Whether you're building your compliance foundations, dealing with an urgent issue, launching something new or expanding into the UK, we provide practical, proportionate support in plain English.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <p style="margin-bottom:26px;color:var(--grey)">Choose the situation that sounds most like yours.</p>
+      <div class="explorer">
+        <ul class="tabs" role="tablist" aria-label="Services by situation">
+          <li><button role="tab" id="tab-ongoing" aria-controls="panel-ongoing" aria-selected="true" data-key="ongoing">We need ongoing advice</button></li>
+          <li><button role="tab" id="tab-compliant" aria-controls="panel-compliant" aria-selected="false" tabindex="-1" data-key="compliant">We need to get compliant</button></li>
+          <li><button role="tab" id="tab-incident" aria-controls="panel-incident" aria-selected="false" tabindex="-1" data-key="incident">Something has happened</button></li>
+          <li><button role="tab" id="tab-new" aria-controls="panel-new" aria-selected="false" tabindex="-1" data-key="new">We're introducing something new</button></li>
+          <li><button role="tab" id="tab-partners" aria-controls="panel-partners" aria-selected="false" tabindex="-1" data-key="partners">We're working with another organisation</button></li>
+          <li><button role="tab" id="tab-culture" aria-controls="panel-culture" aria-selected="false" tabindex="-1" data-key="culture">We want a data protection culture</button></li>
+          <li><button role="tab" id="tab-uk" aria-controls="panel-uk" aria-selected="false" tabindex="-1" data-key="uk">We're expanding into the UK</button></li>
+        </ul>
+
+        <div class="panel" role="tabpanel" id="panel-ongoing" aria-labelledby="tab-ongoing">
+          <h2>We need ongoing advice</h2>
+          <p class="context">You can't justify a full-time DPO yet, but you need someone to turn to when data protection questions come up.</p>
+          <ul class="checklist">
+            <li>General data protection and information governance advice</li>
+            <li>Ongoing advice and support by email and phone</li>
+            <li>Outsourced DPO support</li>
+            <li>A named Data Protection Officer, with details notified to the ICO</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>A dependable adviser who knows your business and can answer questions quickly, at a fraction of the cost of a full-time hire.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-compliant" aria-labelledby="tab-compliant" hidden>
+          <h2>We need to get compliant</h2>
+          <p class="context">You're growing quickly and your data protection framework needs to keep up.</p>
+          <ul class="checklist">
+            <li>Review and update of data protection and information governance policies and procedures</li>
+            <li>Privacy notices</li>
+            <li>Records of Processing Activities (ROPA)</li>
+            <li>Data Security and Protection (DSP) Toolkit completion</li>
+            <li>Data protection compliance documentation</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>Documentation that reflects how your business really works and is ready for partner, investor or regulator scrutiny.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-incident" aria-labelledby="tab-incident" hidden>
+          <h2>Something has happened</h2>
+          <p class="context">Something has gone wrong, or you've received a request or complaint, and you need clear advice on what to do next.</p>
+          <ul class="checklist">
+            <li>Data incident and breach management support</li>
+            <li>Subject Access Request (SAR) support</li>
+            <li>Support with data protection complaints</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>Calm, practical guidance at a stressful time, so you meet your deadlines and respond properly.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-new" aria-labelledby="tab-new" hidden>
+          <h2>We're introducing something new</h2>
+          <p class="context">You're launching a new product, technology, process or way of using data, and you want to understand the risks first.</p>
+          <ul class="checklist">
+            <li>Data Protection Impact Assessments (DPIAs) for new processes, products and emerging technologies</li>
+            <li>AI governance</li>
+            <li>Legitimate Interest Assessments (LIAs)</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>The confidence to launch, with risks identified and addressed before they reach your customers.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-partners" aria-labelledby="tab-partners" hidden>
+          <h2>We're working with another organisation</h2>
+          <p class="context">You're sharing data, onboarding a new supplier or entering an agreement, and you need the data protection side covered.</p>
+          <ul class="checklist">
+            <li>Data Processing Agreements</li>
+            <li>Data Sharing Agreements</li>
+            <li>Contract reviews</li>
+            <li>International data transfer support</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>Agreements that protect your business and clearly set out who is responsible for what.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-culture" aria-labelledby="tab-culture" hidden>
+          <h2>We want a company-wide data protection culture</h2>
+          <p class="context">You want data protection to be part of how your team works every day.</p>
+          <ul class="checklist">
+            <li>Tailored data protection and information governance training</li>
+            <li>Staff training programmes</li>
+            <li>Role-specific data protection training</li>
+            <li>Practical compliance workshops</li>
+            <li>Support to build a data protection compliance culture</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>A team that knows how to handle personal data properly and knows what to do when something looks wrong.</p></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-uk" aria-labelledby="tab-uk" hidden>
+          <h2>We're expanding into the UK</h2>
+          <p class="context">You're entering or scaling in the UK and need to understand which data protection requirements apply to you.</p>
+          <ul class="checklist">
+            <li>UK GDPR and data protection requirements</li>
+            <li>Privacy documentation and notices</li>
+            <li>Data protection policies and procedures</li>
+            <li>UK DPO support</li>
+            <li>Practical guidance for meeting UK data protection obligations</li>
+          </ul>
+          <div class="outcome"><strong>What you get</strong><p>A clear picture of your UK obligations and the documents and support to meet them from day one.</p></div>
+        </div>
+      </div>
+
+      <div class="unsure">
+        <div><hr class="rule"><h2>Not sure what you need?</h2></div>
+        <div class="measure">
+          <p class="lede">That's okay. You don't need to know the name of the regulation or the service before you speak to us.</p>
+          <p class="muted">Tell us what you're trying to do, what has changed or where you're stuck, and we'll help you work out what support makes sense for your business.</p>
+          <a href="#contact" class="btn btn-navy">Start a conversation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO WE HELP ============ -->
+<section class="page" id="page-who-we-help" data-title="Data Protection for Fintech, Healthtech & UK Expansion">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Specialist support for the businesses we know best</h1>
+      <p>Fintech, healthtech and businesses entering the UK market.</p>
+    </div>
+  </div>
+
+  <div class="section-white">
+    <div class="wrap">
+      <div class="sector" id="fintech">
+        <div>
+          <hr class="rule">
+          <h2>Fintech</h2>
+          <p class="intro">Fintech businesses handle identity documents, bank details, transaction histories and other sensitive personal data from the first customer onwards. Banking partners, payment providers and investors will usually want evidence that you manage this data responsibly before they work with you.</p>
+        </div>
+        <div>
+          <h3>We help fintech startups and scaleups</h3>
+          <ul class="checklist">
+            <li>Put clear policies, privacy notices and records of processing in place</li>
+            <li>Prepare for due diligence from partners and investors</li>
+            <li>Assess new features, data uses and AI tools before launch</li>
+            <li>Review supplier and partner contracts</li>
+            <li>Respond to incidents and data subject requests quickly and correctly</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sector" id="healthtech">
+        <div>
+          <hr class="rule">
+          <h2>Healthtech</h2>
+          <p class="intro">Health data is special category data under UK GDPR, which means stricter conditions apply to how you collect, use and share it. If you plan to work with the NHS, you'll usually be expected to complete the Data Security and Protection Toolkit before accessing NHS patient data or systems.</p>
+        </div>
+        <div>
+          <h3>We help healthtech startups and scaleups</h3>
+          <ul class="checklist">
+            <li>Complete the DSP Toolkit</li>
+            <li>Carry out DPIAs for products that handle health data</li>
+            <li>Put the right legal bases and safeguards in place for special category data</li>
+            <li>Draft data sharing and data processing agreements with healthcare partners</li>
+            <li>Train clinical and non-clinical staff on handling patient data</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sector" id="uk">
+        <div>
+          <hr class="rule">
+          <h2>Expanding into the UK</h2>
+          <p class="intro">UK GDPR and the Data Protection Act 2018 set out how organisations must handle personal data in the UK. If you're entering the UK market, you'll need to understand which of these rules apply to you, what documentation you need and whether you need a DPO.</p>
+        </div>
+        <div>
+          <h3>We help businesses expanding into the UK</h3>
+          <ul class="checklist">
+            <li>Understand their UK data protection obligations</li>
+            <li>Prepare UK-ready privacy notices, policies and procedures</li>
+            <li>Set up UK DPO support</li>
+            <li>Manage international data transfers</li>
+            <li>Build compliance into their UK launch plan from the start</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-tight cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Tell us about your business</h2>
+        <p>We'll help you understand what applies to you and what to do first.</p>
+      </div>
+      <a href="#contact" class="btn btn-navy">Talk to us about your business</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAINING ============ -->
+<section class="page" id="page-training" data-title="Data Protection Training for Teams | Sapphire Advisory">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Data protection training your team will actually use</h1>
+      <p>Built around your business, your data and the situations your team faces.</p>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap two-col">
+      <div><hr class="rule"><h2 class="h2">Why training matters</h2></div>
+      <div class="measure">
+        <p class="lede">Most data incidents start with an everyday mistake: an email sent to the wrong person, a shared password or a spreadsheet saved somewhere it shouldn't be.</p>
+        <p class="muted">Good training helps your team understand why data protection matters, what good practice looks like in their role and what to do when something goes wrong.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <hr class="rule">
+      <h2 class="h2">What we offer</h2>
+      <ul class="offer-list">
+        <li><h3>Tailored training</h3><p>Data protection and information governance sessions designed around your sector, your systems and your policies.</p></li>
+        <li><h3>Staff training programmes</h3><p>Ongoing programmes that keep knowledge current as your team grows and changes.</p></li>
+        <li><h3>Role-specific training</h3><p>Focused sessions for teams with particular responsibilities, such as customer support, engineering, product, HR or clinical staff.</p></li>
+        <li><h3>Practical compliance workshops</h3><p>Hands-on sessions working through real scenarios, like handling a subject access request or spotting a data breach.</p></li>
+        <li><h3>Compliance culture support</h3><p>Guidance for leaders on making data protection part of how the business runs day to day.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section section-navy">
+    <div class="wrap two-col">
+      <div><hr class="rule"><h2 class="h2">How it's delivered</h2></div>
+      <div class="measure">
+        <p>[Client to confirm: online, in person or both; typical session length; group sizes; whether certificates are issued.]</p>
+        <a href="#contact" class="btn btn-gold" style="margin-top:14px">Plan training for your team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQS ============ -->
+<section class="page" id="page-faqs" data-title="Data Protection FAQs for Startups | Sapphire Advisory">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Frequently asked questions</h1>
+      <p>Straight answers to the questions startups ask us most.</p>
+    </div>
+  </div>
+
+  <div class="section section-white">
+    <div class="wrap faq">
+      <details open>
+        <summary>Does my business need a Data Protection Officer?</summary>
+        <p>Under UK GDPR, you must appoint a DPO if you're a public authority, if your core activities involve regular and systematic monitoring of people on a large scale, or if you process special category data such as health data on a large scale. Many healthtech businesses fall into this last group. Even where a DPO isn't legally required, having one can make it easier to manage compliance and reassure partners.</p>
+      </details>
+      <details>
+        <summary>What is an outsourced DPO?</summary>
+        <p>An outsourced DPO is an external specialist who carries out the DPO role for your organisation. You get the expertise without the cost of a full-time hire, and the DPO's contact details are notified to the ICO in the usual way.</p>
+      </details>
+      <details>
+        <summary>What should we do if we have a data breach?</summary>
+        <p>Act quickly. If a personal data breach is likely to put people's rights and freedoms at risk, you must report it to the ICO within 72 hours of becoming aware of it. In some cases you'll also need to tell the people affected. We can help you assess the breach, decide whether it needs reporting and manage the response.</p>
+      </details>
+      <details>
+        <summary>How long do we have to respond to a subject access request?</summary>
+        <p>You usually have one month from receiving the request. This can be extended by up to two further months if the request is complex or you've received several from the same person, as long as you tell them within the first month.</p>
+      </details>
+      <details>
+        <summary>What is a DPIA and when do we need one?</summary>
+        <p>A Data Protection Impact Assessment is a structured way of identifying and reducing the risks of a project that uses personal data. It's required when processing is likely to result in a high risk to individuals, which often includes new technologies, AI, large-scale use of health data and monitoring.</p>
+      </details>
+      <details>
+        <summary>Do you only work with fintech and healthtech businesses?</summary>
+        <p>These are our specialist sectors, but we're happy to speak with any growing business that needs practical data protection support.</p>
+      </details>
+      <details>
+        <summary>We're not based in the UK yet. Can you still help?</summary>
+        <p>Yes. We regularly support businesses planning to enter the UK market and can help you prepare before you launch.</p>
+      </details>
+      <details>
+        <summary>Are you a law firm?</summary>
+        <p>[Client to confirm wording. Suggested: We are data protection consultants. Where a matter needs formal legal advice or representation, we'll tell you and can work alongside your legal advisers.]</p>
+      </details>
+      <p style="margin-top:44px"><a href="#contact" class="btn btn-navy">Ask us a question</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact" data-title="Contact Sapphire Advisory | Data Protection Support">
+  <div class="page-head">
+    <span class="ring-deco" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1>Let's talk about what you need</h1>
+      <p>You don't need to have everything figured out before getting in touch. Tell us a little about your business and what's going on, and we'll come back to you within [one working day].</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap contact-grid">
+      <form id="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-company">Company name</label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="f-email">Email address</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-phone">Phone number <span>(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="f-sector">Sector</label>
+            <select id="f-sector" name="sector"><option>Fintech</option><option>Healthtech</option><option>Other</option></select>
+          </div>
+          <div class="field"><label for="f-help">How can we help?</label>
+            <select id="f-help" name="help">
+              <option>Ongoing advice</option><option>Getting compliant</option><option>Something has happened</option><option>Launching something new</option><option>Working with another organisation</option><option>Training</option><option>Expanding into the UK</option><option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+        <button type="submit" class="btn btn-navy">Send message</button>
+        <p class="form-note">Everything you share with us is treated in confidence. See our [Privacy Notice] for how we use your information.</p>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <aside class="contact-aside">
+        <h3>Other ways to reach us</h3>
+        <dl>
+          <dt>Email</dt><dd>[hello@sapphireadvisorygroup.co.uk]</dd>
+          <dt>Phone</dt><dd>[+44 (0) 000 000 0000]</dd>
+          <dt>LinkedIn</dt><dd>[LinkedIn page]</dd>
+        </dl>
+        <div class="urgent">
+          <h3>Dealing with a data breach?</h3>
+          <p>Mention it in your message or choose "Something has happened" so we can prioritise your enquiry. Reportable breaches must usually reach the ICO within 72 hours.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#home" class="brand" aria-label="Sapphire Advisory home">
+          <svg viewBox="0 0 40 40" aria-hidden="true" style="width:34px;height:34px"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#B8962E" stroke-width="1"/><polygon points="13,15 27,15 31,19 20,31 9,19" fill="none" stroke="#B8962E" stroke-width="1.2" stroke-linejoin="round"/><line x1="9" y1="19" x2="31" y2="19" stroke="#B8962E" stroke-width="1"/><line x1="14" y1="19" x2="20" y2="31" stroke="#B8962E" stroke-width="1"/><line x1="26" y1="19" x2="20" y2="31" stroke="#B8962E" stroke-width="1"/></svg>
+          <span class="brand-name">Sapphire<small>ADVISORY</small></span>
+        </a>
+        <p class="foot-tag">Data protection and information governance made easy.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#who-we-help">Who we help</a></li>
+          <li><a href="#training">Training</a></li>
+          <li><a href="#faqs">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="#contact">Contact us</a></li>
+          <li>[hello@sapphireadvisorygroup.co.uk]</li>
+          <li><a href="#home">[Privacy Notice]</a></li>
+          <li><a href="#home">[Cookie Policy]</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; <span id="yr">2026</span> Sapphire Advisory. All rights reserved.</span>
+      <span>Company no. [00000000] | ICO registration no. [ZA000000]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var pages = ['home','about','services','who-we-help','training','faqs','contact'];
+  var menu = document.getElementById('menu');
+  var toggle = document.querySelector('.menu-toggle');
+
+  function selectTab(key, focus){
+    var tabs = document.querySelectorAll('.tabs [role="tab"]');
+    tabs.forEach(function(t){
+      var on = t.dataset.key === key;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      if(on && focus) t.focus();
+    });
+  }
+
+  function route(){
+    var hash = (location.hash || '#home').slice(1);
+    var parts = hash.split('/');
+    var page = pages.indexOf(parts[0]) > -1 ? parts[0] : 'home';
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('is-active'); });
+    var el = document.getElementById('page-' + page);
+    el.classList.add('is-active');
+    document.title = el.dataset.title;
+    document.querySelectorAll('[data-nav]').forEach(function(a){
+      if(a.dataset.nav === page) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
+
+    if(page === 'services' && parts[1]){
+      selectTab(parts[1]);
+      var ex = document.querySelector('.explorer');
+      setTimeout(function(){ ex.scrollIntoView({block:'start'}); }, 0);
+    } else if(page === 'who-we-help' && parts[1]){
+      var target = document.getElementById(parts[1]);
+      setTimeout(function(){ if(target) target.scrollIntoView({block:'start'}); }, 0);
+    } else {
+      window.scrollTo(0,0);
+    }
+  }
+
+  window.addEventListener('hashchange', route);
+  route();
+
+  toggle.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Tabs: click and arrow keys
+  var tabList = document.querySelectorAll('.tabs [role="tab"]');
+  tabList.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t.dataset.key); });
+    t.addEventListener('keydown', function(e){
+      var n = null;
+      if(e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (i + 1) % tabList.length;
+      if(e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (i - 1 + tabList.length) % tabList.length;
+      if(n !== null){ e.preventDefault(); selectTab(tabList[n].dataset.key, true); }
+    });
+  });
+
+  // Contact form (not yet connected to a mail service)
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var missing = [];
+    ['f-name','f-email','f-msg'].forEach(function(id){
+      var f = document.getElementById(id);
+      if(!f.value.trim()) missing.push(f.previousElementSibling.textContent.replace(' (optional)',''));
+    });
+    var email = document.getElementById('f-email').value.trim();
+    if(missing.length){
+      status.textContent = 'Please fill in: ' + missing.join(', ') + '.';
+    } else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      status.textContent = 'Please enter a valid email address, for example name@company.com.';
+    } else {
+      status.textContent = 'Thank you. Your message has been received and we will be in touch shortly.';
+      form.reset();
+    }
+    status.classList.add('show');
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

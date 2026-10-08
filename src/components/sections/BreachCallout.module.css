@@ -1,0 +1,61 @@
+.callout {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 3vw, 36px);
+  color: var(--on-navy);
+  background: var(--navy);
+}
+
+/* A single faint ring, echoing the hero */
+.callout::after {
+  content: '';
+  position: absolute;
+  right: -90px;
+  bottom: -110px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(184, 150, 46, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: var(--gold);
+}
+
+.heading {
+  margin-bottom: 12px;
+  font-size: clamp(25px, 2.4vw, 30px);
+  font-weight: 400;
+  color: var(--white);
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.quoted {
+  white-space: nowrap;
+}
+
+/* Reads as part of the sentence; underline shows it is actionable */
+.optionLink {
+  font: inherit;
+  color: var(--gold-soft);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.optionLink:hover {
+  color: var(--white);
+}

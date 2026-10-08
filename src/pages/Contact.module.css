@@ -1,0 +1,24 @@
+/* Form (~58%) beside contact details and the breach callout (~42%).
+   Columns keep their natural heights. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+  gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+}
+
+.aside {
+  display: grid;
+  gap: clamp(36px, 4vw, 48px);
+  padding-top: clamp(28px, 4vw, 48px);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aside {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,202 @@
+/*
+ * Sapphire Advisory — global styles
+ * Design tokens, base element styles and a few shared utilities.
+ * Component-specific styles live in co-located *.module.css files.
+ */
+
+:root {
+  /* Brand colour */
+  --navy: #0a1f44;
+  --navy-2: #152e5e;
+  --navy-3: #1e3a72;
+  --gold: #b8962e;
+  --gold-soft: #f0d98a;
+  --charcoal: #1c2b33;
+  --slate: #2e3e48;
+  --grey: #4a5568;
+  --paper: #f6f7f9;
+  --white: #ffffff;
+  --line: #dce1e8;
+
+  /* Supporting tints used on dark backgrounds (from the original site) */
+  --on-navy: #c9d2e3;
+  --on-navy-muted: #aeb9cc;
+  --on-charcoal: #c3cad2;
+  --gold-line: rgba(184, 150, 46, 0.25);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Layout */
+  --container-width: 1180px;
+  --gutter: 28px;
+  --header-height: 78px;
+  --radius: 3px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ---------- Reset & base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--charcoal);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+main:focus {
+  outline: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Buttons & form controls ---------- */
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* ---------- Focus ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout utilities ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 560px) {
+  :root {
+    --gutter: 20px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

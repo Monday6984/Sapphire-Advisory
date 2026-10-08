@@ -1,0 +1,49 @@
+.section {
+  position: relative;
+}
+
+/* ---------- Spacing ---------- */
+
+.default {
+  padding-block: clamp(76px, 10vw, 128px);
+}
+
+.tight {
+  padding-block: clamp(60px, 7.5vw, 96px);
+}
+
+/* ---------- Tones ---------- */
+
+.paper,
+.white {
+  --section-heading: var(--navy);
+  --section-text: var(--charcoal);
+  --section-muted: var(--grey);
+  --section-rule: var(--line);
+  color: var(--section-text);
+}
+
+.paper {
+  background: var(--paper);
+}
+
+.white {
+  background: var(--white);
+}
+
+.navy,
+.charcoal {
+  --section-heading: var(--white);
+  --section-text: var(--on-navy);
+  --section-muted: var(--on-navy-muted);
+  --section-rule: rgba(255, 255, 255, 0.14);
+  color: var(--section-text);
+}
+
+.navy {
+  background: var(--navy);
+}
+
+.charcoal {
+  background: var(--charcoal);
+}

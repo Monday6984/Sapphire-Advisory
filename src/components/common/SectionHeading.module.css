@@ -1,0 +1,34 @@
+.wrapper {
+  max-width: 34em;
+}
+
+.rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-bottom: 28px;
+  background: var(--gold);
+}
+
+.eyebrow {
+  margin: -6px 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.heading {
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--section-heading, var(--navy));
+}
+
+.intro {
+  margin: 22px 0 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--section-muted, var(--grey));
+}

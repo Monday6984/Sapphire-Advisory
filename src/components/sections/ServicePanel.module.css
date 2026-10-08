@@ -1,0 +1,137 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'head'
+    'list'
+    'outcome';
+}
+
+/* Desktop: copy left, photograph right spanning the copy */
+.withImage {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 34%);
+  grid-template-areas:
+    'head media'
+    'list media'
+    'outcome outcome';
+  column-gap: clamp(28px, 3.5vw, 44px);
+}
+
+/* ---------- Copy ---------- */
+
+.head {
+  grid-area: head;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.heading {
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 400;
+  color: var(--navy);
+}
+
+.context {
+  max-width: 32em;
+  margin: 16px 0 0;
+  font-size: 17px;
+  color: var(--grey);
+}
+
+/* Gold-dash styling comes from the shared Checklist component; the extra
+   .grid scope makes this spacing win regardless of stylesheet order. */
+.grid .list {
+  grid-area: list;
+  align-content: start;
+  margin: 28px 0 36px;
+}
+
+/* ---------- Photograph ---------- */
+
+.media {
+  grid-area: media;
+  align-self: start;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Outcome ---------- */
+
+.outcome {
+  grid-area: outcome;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0 clamp(24px, 3vw, 36px);
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.withImage .outcome {
+  margin-top: 8px;
+}
+
+.outcomeLabel {
+  padding-right: clamp(24px, 3vw, 36px);
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--navy);
+  border-right: 1px solid var(--line);
+}
+
+.outcomeText {
+  margin: 0;
+  color: var(--charcoal);
+}
+
+/* ---------- Tablet & mobile: photograph between context and list ---------- */
+
+@media (max-width: 1080px) {
+  .withImage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'head'
+      'media'
+      'list'
+      'outcome';
+  }
+
+  .media {
+    margin-top: 28px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 520px) {
+  .media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .outcome {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+  }
+
+  .outcomeLabel {
+    padding-right: 0;
+    border-right: 0;
+  }
+}
