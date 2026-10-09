@@ -1,7 +1,8 @@
 import Section from '../layout/Section';
 import SectionHeading from '../common/SectionHeading';
 import Button from '../common/Button';
-import GemIcon from '../common/GemIcon';
+import BrandMark from '../common/BrandMark';
+import BrandPattern from '../common/BrandPattern';
 import ResponsiveImage from '../common/ResponsiveImage';
 import styles from './FounderSection.module.css';
 
@@ -26,8 +27,8 @@ export default function FounderSection({ content, photo }) {
             />
           ) : (
             <div className={styles.placeholder}>
-              <span className={styles.placeholderRings} aria-hidden="true" />
-              <GemIcon className={styles.placeholderGem} />
+              <BrandPattern className={styles.placeholderPattern} size={40} />
+              <BrandMark className={styles.placeholderGem} />
               <span className={styles.placeholderLabel}>{photoPlaceholder}</span>
             </div>
           )}

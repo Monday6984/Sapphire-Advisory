@@ -2,33 +2,16 @@
   overflow: hidden;
 }
 
-/* Faint concentric rings, top-right, echoing the gem dial */
-.rings {
-  position: absolute;
-  top: -180px;
-  right: -200px;
-  width: 560px;
-  height: 560px;
-  border: 1px solid rgba(184, 150, 46, 0.16);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.rings::before,
-.rings::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-}
-
-.rings::before {
-  inset: 70px;
-  border: 1px solid rgba(184, 150, 46, 0.11);
-}
-
-.rings::after {
-  inset: 140px;
-  border: 1px dashed rgba(184, 150, 46, 0.09);
+/* Faint patch of the brand pattern, top-right, fading out (scoped to
+   override BrandPattern's full-bleed sizing) */
+.section .pattern {
+  left: auto;
+  bottom: auto;
+  width: 50%;
+  height: 75%;
+  opacity: 0.14;
+  -webkit-mask-image: radial-gradient(ellipse at top right, #000 0, transparent 70%);
+  mask-image: radial-gradient(ellipse at top right, #000 0, transparent 70%);
 }
 
 /* ---------- List ---------- */
@@ -58,17 +41,21 @@
 
 .number {
   flex: 0 0 38px;
-  font-family: var(--font-serif);
-  font-size: 32px;
+  font-family: var(--font-display);
+  font-size: 26px;
   line-height: 1;
-  color: var(--gold);
+  color: var(--accent);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .name {
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 2vw, 26px);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.6vw, 21px);
   line-height: 1.2;
   color: var(--white);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .text {
@@ -103,13 +90,7 @@
   }
 
   .number {
-    font-size: 28px;
+    font-size: 22px;
   }
 
-  .rings {
-    top: -140px;
-    right: -260px;
-    width: 420px;
-    height: 420px;
-  }
 }

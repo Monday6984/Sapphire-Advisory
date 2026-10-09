@@ -1,0 +1,32 @@
+/* Outline variant. Stroke width is in mark units (the mark is ~92 units
+   tall, shown ~100–160px), giving a fine ~1.2–1.8px line. Not using
+   vector-effect: non-scaling-stroke, which breaks the pathLength-based
+   draw-in animation. */
+.outline path {
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+
+.animated path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 2.2s var(--ease) forwards;
+}
+
+.animated path + path {
+  animation-delay: 0.45s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}

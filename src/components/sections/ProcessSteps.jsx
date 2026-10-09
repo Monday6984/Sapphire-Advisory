@@ -1,5 +1,6 @@
 import Section from '../layout/Section';
 import SectionHeading from '../common/SectionHeading';
+import BrandMark from '../common/BrandMark';
 import styles from './ProcessSteps.module.css';
 
 /**
@@ -14,7 +15,7 @@ export default function ProcessSteps({ heading, steps, tone = 'navy' }) {
       <ol className={styles.steps}>
         {steps.map((step, index) => (
           <li key={step.title} className={styles.step}>
-            <span className={styles.node} aria-hidden="true" />
+            <BrandMark className={styles.node} />
             <span className={styles.number} aria-hidden="true">
               {String(index + 1).padStart(2, '0')}
             </span>

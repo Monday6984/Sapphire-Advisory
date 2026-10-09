@@ -50,7 +50,7 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .text {
@@ -59,11 +59,13 @@
 }
 
 .title {
-  font-family: var(--font-serif);
-  font-size: clamp(24px, 2.3vw, 29px);
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.8vw, 23px);
   line-height: 1.2;
   color: var(--white);
   transition: color 0.2s var(--ease);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .desc {
@@ -80,7 +82,7 @@
   font-size: 14px;
   letter-spacing: 0.04em;
   white-space: nowrap;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .go svg {

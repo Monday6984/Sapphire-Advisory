@@ -1,5 +1,6 @@
 .section {
   position: relative;
+  isolation: isolate;
 }
 
 /* ---------- Spacing ---------- */
@@ -37,6 +38,7 @@
   --section-text: var(--on-navy);
   --section-muted: var(--on-navy-muted);
   --section-rule: rgba(255, 255, 255, 0.14);
+  --accent: var(--gold);
   color: var(--section-text);
 }
 

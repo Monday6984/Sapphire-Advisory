@@ -1,4 +1,6 @@
 .pageHeader {
+  isolation: isolate;
+  --accent: var(--gold);
   position: relative;
   overflow: hidden;
   color: var(--white);
@@ -15,10 +17,10 @@
 
 .title {
   max-width: 15em;
-  font-size: clamp(40px, 5.2vw, 68px);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(34px, 4.2vw, 54px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0;
   color: var(--white);
 }
 
@@ -49,24 +51,16 @@
   }
 }
 
-/* ---------- Rings (no image) ---------- */
+/* ---------- Brand pattern (no image) ---------- */
 
-.rings {
-  position: absolute;
-  top: -120px;
-  right: -140px;
-  width: 460px;
-  height: 460px;
-  border: 1px solid var(--gold-line);
-  border-radius: 50%;
-}
-
-.rings::after {
-  content: '';
-  position: absolute;
-  inset: 60px;
-  border: 1px solid rgba(184, 150, 46, 0.15);
-  border-radius: 50%;
+/* Right-hand field of hexagon outlines, fading out towards the copy
+   (scoped so it overrides BrandPattern's full-bleed sizing) */
+.pageHeader .pattern {
+  left: auto;
+  width: 55%;
+  opacity: 0.22;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60%);
+  mask-image: linear-gradient(to right, transparent 0, #000 60%);
 }
 
 /* ---------- With image ---------- */
@@ -106,25 +100,21 @@
   pointer-events: none;
 }
 
-/* Concentric gold rings on the seam between navy and photograph */
-.seamRings {
+/* Outlined brand mark on the seam between navy and photograph */
+.seamMark {
   position: absolute;
   z-index: 1;
-  left: -40px;
-  bottom: -200px;
-  width: 340px;
-  height: 340px;
-  border: 1px solid rgba(184, 150, 46, 0.32);
-  border-radius: 50%;
+  /* Low on the seam, partly cropped by the hero edge, clear of the copy */
+  left: clamp(-56px, -3.6vw, -36px);
+  bottom: -34px;
+  width: clamp(96px, 8vw, 120px);
+  color: var(--gold);
   pointer-events: none;
 }
 
-.seamRings::after {
-  content: '';
-  position: absolute;
-  inset: 48px;
-  border: 1px solid rgba(184, 150, 46, 0.18);
-  border-radius: 50%;
+.seamMarkSvg {
+  width: 100%;
+  height: auto;
 }
 
 /* ---------- Tablet & mobile: text, then photograph ---------- */
@@ -152,17 +142,16 @@
     mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
   }
 
-  .seamRings {
+  .seamMark {
     left: auto;
-    right: -110px;
-    top: -110px;
-    bottom: auto;
-    width: 260px;
-    height: 260px;
+    right: var(--gutter);
+    bottom: 18px;
+    width: 72px;
   }
 
-  .seamRings::after {
-    inset: 36px;
+  .pageHeader .pattern {
+    width: 70%;
+    opacity: 0.16;
   }
 }
 
@@ -172,11 +161,9 @@
     max-height: 320px;
   }
 
-  .seamRings {
-    right: -90px;
-    top: -90px;
-    width: 200px;
-    height: 200px;
+  .seamMark {
+    width: 56px;
+    bottom: 14px;
   }
 }
 

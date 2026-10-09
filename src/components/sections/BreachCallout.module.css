@@ -1,4 +1,6 @@
 .callout {
+  --accent: var(--gold);
+  isolation: isolate;
   position: relative;
   overflow: hidden;
   padding: clamp(28px, 3vw, 36px);
@@ -7,16 +9,16 @@
 }
 
 /* A single faint ring, echoing the hero */
-.callout::after {
-  content: '';
-  position: absolute;
-  right: -90px;
-  bottom: -110px;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(184, 150, 46, 0.2);
-  border-radius: 50%;
-  pointer-events: none;
+/* Small patch of the brand pattern, bottom-right, fading out (scoped to
+   override BrandPattern's full-bleed sizing) */
+.callout .pattern {
+  left: auto;
+  top: auto;
+  width: 60%;
+  height: 80%;
+  opacity: 0.18;
+  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 0, transparent 70%);
+  mask-image: radial-gradient(ellipse at bottom right, #000 0, transparent 70%);
 }
 
 .rule {
@@ -29,9 +31,10 @@
 
 .heading {
   margin-bottom: 12px;
-  font-size: clamp(25px, 2.4vw, 30px);
+  font-size: clamp(21px, 2vw, 25px);
   font-weight: 400;
   color: var(--white);
+  letter-spacing: 0.01em;
 }
 
 .text {

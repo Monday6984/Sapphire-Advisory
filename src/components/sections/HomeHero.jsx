@@ -1,14 +1,15 @@
 import { Link } from 'react-router';
 import { ArrowRight } from 'lucide-react';
 import Button from '../common/Button';
-import GemMark from '../common/GemMark';
+import BrandMark from '../common/BrandMark';
+import BrandPattern from '../common/BrandPattern';
 import ResponsiveImage from '../common/ResponsiveImage';
 import styles from './HomeHero.module.css';
 
 /**
  * Home hero: editorial headline, supporting copy and CTAs beside a
- * full-bleed photograph that fades into the navy, with the gem dial as a
- * quiet brand detail on the seam. A ruled strip of sector shortcuts runs
+ * full-bleed photograph that fades into the navy, with the outlined brand
+ * mark as a quiet detail on the seam and the brand pattern faintly behind. A ruled strip of sector shortcuts runs
  * along the base.
  */
 export default function HomeHero({ content, image, sectors }) {
@@ -16,6 +17,7 @@ export default function HomeHero({ content, image, sectors }) {
 
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
+      <BrandPattern className={styles.pattern} size={54} />
       <div className={styles.stage}>
         <div className={`container ${styles.grid}`}>
           <div className={styles.copy}>
@@ -43,7 +45,7 @@ export default function HomeHero({ content, image, sectors }) {
             priority
           />
           <div className={styles.gem}>
-            <GemMark />
+            <BrandMark variant="outline" animated className={styles.emblem} />
           </div>
         </div>
       </div>

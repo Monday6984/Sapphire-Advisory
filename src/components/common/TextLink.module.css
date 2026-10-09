@@ -11,13 +11,13 @@
 
 .label {
   padding-bottom: 2px;
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 1px solid var(--accent);
   transition: border-color 0.2s var(--ease);
 }
 
 .icon {
   flex-shrink: 0;
-  color: var(--gold);
+  color: var(--accent);
   transition: transform 0.25s var(--ease);
 }
 

@@ -1,11 +1,11 @@
 import Section from '../layout/Section';
 import Button from '../common/Button';
-import GemIcon from '../common/GemIcon';
+import BrandMark from '../common/BrandMark';
 import styles from './CtaBand.module.css';
 
 /**
  * Closing call to action used at the foot of pages.
- * `accent`: 'gem' (default) shows the small gem mark; 'rule' shows the short
+ * `accent`: 'gem' (default) shows the brand mark; 'rule' shows the short
  * gold rule above the heading instead.
  */
 export default function CtaBand({ id = 'cta', heading, text, action, tone = 'paper', accent = 'gem' }) {
@@ -14,7 +14,7 @@ export default function CtaBand({ id = 'cta', heading, text, action, tone = 'pap
   return (
     <Section tone={tone} spacing="tight" labelledBy={headingId} className={styles.band}>
       <div className={`${styles.inner} ${accent === 'rule' ? styles.ruled : ''}`}>
-        {accent === 'gem' && <GemIcon className={styles.gem} />}
+        {accent === 'gem' && <BrandMark className={styles.gem} />}
         <div>
           {accent === 'rule' && <span className={styles.rule} aria-hidden="true" />}
           <h2 id={headingId} className={styles.heading}>

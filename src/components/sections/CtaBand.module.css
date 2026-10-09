@@ -22,19 +22,21 @@
   background: var(--gold);
 }
 
+/* Brand mark, Deep Navy on light backgrounds (brand guide primary colourway) */
 .gem {
-  width: 56px;
-  height: 56px;
-  color: var(--gold);
+  width: auto;
+  height: 52px;
+  color: var(--navy);
   align-self: start;
   margin-top: 6px;
 }
 
 .heading {
   max-width: 18em;
-  font-size: clamp(32px, 3.6vw, 46px);
-  font-weight: 400;
+  font-size: clamp(26px, 2.9vw, 37px);
+  font-weight: 500;
   color: var(--section-heading);
+  letter-spacing: 0;
 }
 
 .text {
@@ -50,8 +52,7 @@
   }
 
   .gem {
-    width: 44px;
-    height: 44px;
+    height: 42px;
     margin-top: 0;
   }
 

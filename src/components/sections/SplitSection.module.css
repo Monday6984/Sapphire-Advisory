@@ -11,10 +11,11 @@
 
 .lede {
   margin: 0 0 1.1em;
-  font-family: var(--font-serif);
-  font-size: clamp(25px, 2.5vw, 32px);
-  line-height: 1.35;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.45;
   color: var(--section-heading, var(--navy));
+  font-weight: 400;
 }
 
 .text {
@@ -35,23 +36,16 @@
   overflow: hidden;
 }
 
-.rings {
-  position: absolute;
-  left: -170px;
-  bottom: -230px;
-  width: 460px;
-  height: 460px;
-  border: 1px solid rgba(184, 150, 46, 0.22);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.rings::after {
-  content: '';
-  position: absolute;
-  inset: 64px;
-  border: 1px solid rgba(184, 150, 46, 0.14);
-  border-radius: 50%;
+/* Faint patch of the brand pattern, bottom-left, fading out (scoped to
+   override BrandPattern's full-bleed sizing) */
+.decorated .pattern {
+  right: auto;
+  top: auto;
+  width: 42%;
+  height: 90%;
+  opacity: 0.2;
+  -webkit-mask-image: radial-gradient(ellipse at bottom left, #000 0, transparent 70%);
+  mask-image: radial-gradient(ellipse at bottom left, #000 0, transparent 70%);
 }
 
 .divided {
@@ -167,12 +161,13 @@
     border-left: 0;
   }
 
-  .rings {
+  .decorated .pattern {
     left: auto;
-    right: -230px;
-    bottom: -260px;
-    width: 400px;
-    height: 400px;
+    right: 0;
+    width: 70%;
+    height: 60%;
+    -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 0, transparent 70%);
+    mask-image: radial-gradient(ellipse at bottom right, #000 0, transparent 70%);
   }
 
   .withImage {

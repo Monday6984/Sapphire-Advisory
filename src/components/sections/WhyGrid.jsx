@@ -1,6 +1,7 @@
 import Section from '../layout/Section';
 import SectionHeading from '../common/SectionHeading';
 import DraftNote from '../common/DraftNote';
+import BrandMark from '../common/BrandMark';
 import ResponsiveImage from '../common/ResponsiveImage';
 import styles from './WhyGrid.module.css';
 
@@ -29,7 +30,7 @@ export default function WhyGrid({ heading, points, image, draftNote }) {
           {points.map((point) => (
             <div key={point.title} className={styles.point}>
               <h3 className={styles.title}>
-                <span className={styles.marker} aria-hidden="true" />
+                <BrandMark className={styles.marker} />
                 {point.title}
               </h3>
               <p className={styles.text}>{point.text}</p>

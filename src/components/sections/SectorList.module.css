@@ -28,7 +28,7 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.14em;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .media {
@@ -51,8 +51,8 @@
 
 .name {
   margin-bottom: 14px;
-  font-size: clamp(30px, 3.2vw, 40px);
-  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 500;
   color: var(--section-heading);
 }
 
@@ -71,7 +71,7 @@
   }
 
   .name {
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 10px;
   }
 

@@ -2,6 +2,7 @@ import Section from '../layout/Section';
 import SectionHeading from '../common/SectionHeading';
 import ResponsiveImage from '../common/ResponsiveImage';
 import Button from '../common/Button';
+import BrandPattern from '../common/BrandPattern';
 import styles from './SplitSection.module.css';
 
 // `sizes` reflects the drawn width under object-fit: cover (see assets/images).
@@ -25,7 +26,8 @@ const IMAGE_SIZES = {
  *
  * Options: `action` ({ to, label, variant? }) adds a button after the copy
  * (navy unless `variant` is given);
- * `decorated` adds faint ring linework and a gold divider between columns.
+ * `decorated` adds a faint patch of the brand pattern and a gold divider
+ * between columns.
  */
 export default function SplitSection({
   id,
@@ -113,7 +115,7 @@ export default function SplitSection({
       id={id}
       className={decorated ? styles.decorated : undefined}
     >
-      {decorated && <span className={styles.rings} aria-hidden="true" />}
+      {decorated && <BrandPattern className={styles.pattern} size={44} />}
       {content}
     </Section>
   );

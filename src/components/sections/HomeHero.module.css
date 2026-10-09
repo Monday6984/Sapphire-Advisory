@@ -1,4 +1,6 @@
 .hero {
+  isolation: isolate;
+  --accent: var(--gold);
   position: relative;
   overflow: hidden;
   color: var(--white);
@@ -23,10 +25,10 @@
 }
 
 .title {
-  font-size: clamp(54px, 7vw, 100px);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.018em;
+  font-size: clamp(44px, 5.6vw, 80px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: 0;
   color: var(--white);
 }
 
@@ -36,7 +38,7 @@
 
 .accent {
   display: block;
-  font-style: italic;
+  font-style: normal;
   color: var(--gold-soft);
 }
 
@@ -110,15 +112,29 @@
 }
 
 /* Gem dial straddling the seam between navy and photograph */
+/* Outlined brand mark straddling the seam between navy and photograph */
 .gem {
   position: absolute;
   z-index: 1;
   /* Overlaps the seam just enough to bridge it, never the copy */
-  left: clamp(-80px, -5vw, -50px);
-  bottom: 7%;
-  width: clamp(180px, 17vw, 240px);
-  opacity: 0.9;
+  left: clamp(-70px, -4.5vw, -44px);
+  bottom: 8%;
+  width: clamp(120px, 11vw, 160px);
+  color: var(--gold);
   pointer-events: none;
+}
+
+.emblem {
+  width: 100%;
+  height: auto;
+}
+
+/* Brand pattern: faint, and fading out towards the photograph */
+.pattern {
+  color: var(--gold);
+  opacity: 0.07;
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 35%, transparent 70%);
+  mask-image: linear-gradient(to right, #000 0, #000 35%, transparent 70%);
 }
 
 /* ---------- Sector strip ---------- */
@@ -155,21 +171,23 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .stripName {
   flex: 1;
-  font-family: var(--font-serif);
-  font-size: clamp(21px, 2vw, 25px);
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.6vw, 20px);
   line-height: 1.2;
   transition: color 0.2s var(--ease);
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 .stripIcon {
   align-self: center;
   flex-shrink: 0;
-  color: var(--gold);
+  color: var(--accent);
   transition: transform 0.25s var(--ease);
 }
 

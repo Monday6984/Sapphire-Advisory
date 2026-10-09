@@ -1,3 +1,4 @@
+import BrandPattern from '../common/BrandPattern';
 import styles from './BreachCallout.module.css';
 
 /**
@@ -10,6 +11,7 @@ export default function BreachCallout({ content, onSelectOption }) {
 
   return (
     <aside className={styles.callout} aria-labelledby="breach-heading">
+      <BrandPattern className={styles.pattern} size={36} />
       <span className={styles.rule} aria-hidden="true" />
       <h2 id="breach-heading" className={styles.heading}>
         {heading}

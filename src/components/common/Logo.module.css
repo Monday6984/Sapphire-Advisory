@@ -1,33 +1,37 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: var(--white);
-  text-decoration: none;
   flex-shrink: 0;
+  text-decoration: none;
 }
 
-.mark {
-  width: 34px;
-  height: 34px;
-  color: var(--gold);
-}
-
-.wordmark {
-  font-family: var(--font-serif);
-  font-size: 25px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: 1;
-}
-
-.descriptor {
+/* Height drives size; width follows the lockup's aspect ratio (~2.8:1) */
+.svg {
   display: block;
-  margin-top: 4px;
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold);
+  height: 42px;
+  width: auto;
+}
+
+/* ---------- Brand colourways ---------- */
+
+.dark .mark {
+  fill: var(--gold);
+}
+
+.dark .word {
+  fill: var(--white);
+}
+
+.light .mark {
+  fill: var(--navy);
+}
+
+.light .word {
+  fill: var(--brand-ink);
+}
+
+@media (max-width: 560px) {
+  .svg {
+    height: 36px;
+  }
 }

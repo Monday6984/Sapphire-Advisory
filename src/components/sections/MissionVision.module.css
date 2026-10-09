@@ -8,10 +8,11 @@
 .statement {
   max-width: 20em;
   margin: clamp(24px, 2.6vw, 32px) 0 0;
-  font-family: var(--font-serif);
-  font-size: clamp(24px, 2.4vw, 30px);
-  line-height: 1.4;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.9vw, 24px);
+  line-height: 1.45;
   color: var(--section-heading);
+  font-weight: 400;
 }
 
 .copy {

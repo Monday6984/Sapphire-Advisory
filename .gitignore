@@ -13,6 +13,13 @@ coverage/
 !.env.example
 *.local
 
+# Client brand source files (original logos, licensed .otf fonts, brand
+# guide PDF). Kept locally for reference; not redistributed. The site uses
+# its own derived assets in src/ and public/.
+brand/
+*.pdf
+*.otf
+
 # Logs
 *.log
 npm-debug.log*

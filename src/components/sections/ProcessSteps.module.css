@@ -24,32 +24,32 @@
   padding-top: 44px;
 }
 
+/* Brand mark sitting on the connecting line */
 .node {
   position: absolute;
-  top: 0;
+  top: -3px;
   left: 0;
-  width: 9px;
-  height: 9px;
-  background: var(--navy);
-  border: 1px solid var(--gold);
-  transform: rotate(45deg);
+  width: auto;
+  height: 14px;
+  color: var(--gold);
 }
 
 .number {
   display: block;
   margin-bottom: 20px;
-  font-family: var(--font-serif);
-  font-size: clamp(52px, 5vw, 64px);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4vw, 52px);
+  font-weight: 500;
   line-height: 1;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .title {
   margin-bottom: 12px;
-  font-size: clamp(25px, 2.2vw, 28px);
-  font-weight: 500;
+  font-size: clamp(20px, 1.8vw, 22px);
+  font-weight: 400;
   color: var(--section-heading);
+  letter-spacing: 0.01em;
 }
 
 .text {
@@ -80,12 +80,12 @@
   }
 
   .node {
-    top: 6px;
-    left: -40px;
+    top: 4px;
+    left: -42px;
   }
 
   .number {
     margin-bottom: 12px;
-    font-size: 48px;
+    font-size: 38px;
   }
 }

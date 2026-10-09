@@ -10,6 +10,7 @@ Website for Sapphire Advisory, a UK data protection and information governance c
 - [Lucide React](https://lucide.dev/) for interface icons
 - [vite-imagetools](https://github.com/JonasKruckenberg/imagetools) for build-time image resizing and WebP conversion
 - CSS Modules plus a global design-token stylesheet (`src/index.css`)
+- Brand typefaces: Aloevera (headings, self-hosted) and Plus Jakarta Sans (body, Google Fonts)
 
 ## Getting started
 
@@ -52,8 +53,11 @@ src/
   data/            All website copy and SEO metadata, one file per page/topic
   lib/             Non-visual helpers (site URL, enquiry delivery stub)
   pages/           One component per route
-public/            Static files served as-is (favicon)
+public/            Static files served as-is (favicon, Apple touch icon)
+brand/             Client brand source files - local only, git-ignored
 ```
+
+The `brand/` folder holds the client's original logo files, the licensed Aloevera `.otf` fonts and the brand guide PDF. It is deliberately **not committed**: commercial font licences generally do not allow publishing the source font files, and the PDF exceeds GitHub's 100 MB limit. The site uses its own derived assets instead (vector logo artwork in `src/components/common/logoArtwork.js`, `.woff2` fonts in `src/assets/fonts/`). Get the originals from the project owner if you need them.
 
 Website copy lives in `src/data/`, so text changes rarely require touching components. Bracketed text such as `[Founder name]` or `[Privacy Notice]` is an intentional client placeholder awaiting confirmed details.
 

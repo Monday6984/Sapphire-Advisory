@@ -1,15 +1,16 @@
 import Section from '../layout/Section';
 import SectionHeading from '../common/SectionHeading';
+import BrandPattern from '../common/BrandPattern';
 import styles from './ValuesList.module.css';
 
 /**
- * Numbered values in a two-column editorial list on navy, with faint
- * Sapphire ring linework behind. Uses a description list, as the original.
+ * Numbered values in a two-column editorial list on navy, with a faint
+ * patch of the brand pattern behind. Uses a description list, as the original.
  */
 export default function ValuesList({ heading, items }) {
   return (
     <Section tone="navy" labelledBy="values-heading" className={styles.section}>
-      <span className={styles.rings} aria-hidden="true" />
+      <BrandPattern className={styles.pattern} size={44} />
 
       <SectionHeading id="values-heading">{heading}</SectionHeading>
 

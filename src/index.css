@@ -4,14 +4,46 @@
  * Component-specific styles live in co-located *.module.css files.
  */
 
+/* Aloevera (BeeType Studio) is the brand typeface (Sapphire Brand
+   Identity), used for headings via --font-display. The .woff2 files are
+   converted from the client-supplied .otf originals (kept locally in
+   brand/fonts/, which is not committed, as commercial font licences generally
+   do not allow publishing the source files). Only the two weights the site uses
+   are loaded: Medium for headings (as in the brand guide) and Regular for
+   ledes and smaller display text. Aloevera is heavier and wider than most
+   sans-serifs, so headings use normal letter-spacing. */
+
+@font-face {
+  font-family: 'Aloevera';
+  src: url('./assets/fonts/Aloevera-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Aloevera';
+  src: url('./assets/fonts/Aloevera-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
 :root {
-  /* Brand colour */
-  --navy: #0a1f44;
+  /* Brand colour — values from the Sapphire Brand Identity swatches
+     (the guide's printed labels for Light Gold and Charcoal are wrong;
+     the swatch colours are used). */
+  --navy: #0a1f45; /* Deep Navy */
   --navy-2: #152e5e;
   --navy-3: #1e3a72;
-  --gold: #b8962e;
-  --gold-soft: #f0d98a;
-  --charcoal: #1c2b33;
+  --gold: #e5ba05; /* Gold: fills, rules, buttons, accents on dark */
+  --gold-soft: #f0d98b; /* Light Gold */
+  --charcoal: #1c2a33; /* Charcoal */
+  --brand-ink: #131313; /* logo wordmark on light backgrounds */
+
+  /* Gold is too light for text on white (1.9:1). --gold-ink is a darker
+     shade of it that passes WCAG AA on white and paper; --accent picks the
+     right one for the context and is used for gold text, icons and focus
+     rings. Dark containers reset --accent to --gold. */
+  --gold-ink: #856900;
+  --accent: var(--gold-ink);
   --slate: #2e3e48;
   --grey: #4a5568;
   --paper: #f6f7f9;
@@ -22,11 +54,13 @@
   --on-navy: #c9d2e3;
   --on-navy-muted: #aeb9cc;
   --on-charcoal: #c3cad2;
-  --gold-line: rgba(184, 150, 46, 0.25);
+  --gold-line: rgba(229, 186, 5, 0.25);
 
-  /* Typography */
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  /* Typography (brand guide): Aloevera for headings — falls back to Plus
+     Jakarta Sans until its web fonts are added (see @font-face above);
+     Plus Jakarta Sans for body text. */
+  --font-display: 'Aloevera', 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
 
   /* Layout */
   --container-width: 1180px;
@@ -55,10 +89,10 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--charcoal);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -91,9 +125,10 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: 0;
   color: var(--navy);
 }
 
@@ -133,7 +168,7 @@ textarea {
 /* ---------- Focus ---------- */
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
